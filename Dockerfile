@@ -3,10 +3,16 @@ FROM alpine:edge
 MAINTAINER Juliano Petronetto <juliano@petronetto.com.br>
 
 # Install packages
-RUN apk --update add \
+RUN apk --update add --no-cache \
         nginx \
         curl \
         supervisor \
+        gd \
+        freetype \
+        libpng \
+        libjpeg-turbo \
+        freetype-dev \
+        libpng-dev \
         php7 \
         php7-dom \
         php7-fpm \
@@ -21,8 +27,8 @@ RUN apk --update add \
         php7-json \
         php7-ctype \
         php7-session \
-
-    && rm -rf /var/cache/apk/*
+        php7-gd \
+        && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
 RUN ln -s /usr/bin/php7 /usr/bin/php
@@ -32,7 +38,7 @@ COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY config/nginx/default /etc/nginx/sites-enabled/default
 
 # Configure PHP-FPM
-COPY config/php/php.ini /etc/php7/conf.d/zzz_custom.ini
+COPY config/php/php.ini /etc/php7/php.ini
 COPY config/php/www.conf /etc/php7/php-fpm.d/www.conf
 
 # Configure supervisord
