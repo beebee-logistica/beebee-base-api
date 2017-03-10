@@ -52,7 +52,8 @@ WORKDIR /app
 RUN deluser xfs \
     && delgroup www-data \
     && addgroup -g 33 -S www-data \
-    && adduser -u 33 -D -S -G www-data -h /app -g www-data www-data
+    && adduser -u 33 -D -S -G www-data -h /app -g www-data www-data \
+    && chown -R www-data:www-data /var/lib/nginx
 
 # Start Supervisord
 ADD config/start.sh /start.sh
