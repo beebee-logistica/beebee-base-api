@@ -7,9 +7,6 @@ server {
 
   gzip_types text/plain text/css application/javascript application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
 
-  sendfile           on;
-  sendfile_max_chunk 1m;
-
   error_page 404 /index.php;
 
   location ~ \.php$ {
