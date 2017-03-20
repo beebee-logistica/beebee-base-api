@@ -3,7 +3,7 @@ FROM alpine:edge
 MAINTAINER Juliano Petronetto <juliano@petronetto.com.br>
 
 # Install packages
-RUN apk --update add --no-cache \
+RUN apk --update add \
         nginx \
         curl \
         supervisor \
