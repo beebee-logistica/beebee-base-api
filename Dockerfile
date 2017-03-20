@@ -3,8 +3,7 @@ FROM alpine:edge
 MAINTAINER Juliano Petronetto <juliano@petronetto.com.br>
 
 # Install packages
-RUN apk -U upgrade && \
-        apk -U add --no-cache \
+RUN apk --update add --no-cache \
         nginx \
         curl \
         supervisor \
@@ -29,6 +28,7 @@ RUN apk -U upgrade && \
         php7-ctype \
         php7-session \
         php7-gd \
+        php7-zlib \
         && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
