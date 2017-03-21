@@ -48,14 +48,13 @@ COPY config/supervisord.conf /etc/supervisord.conf
 RUN mkdir -p /app
 WORKDIR /app
 
-# Fixing path permissions
-RUN chown -R www:www /app
-
 # Set UID for www user to 1000
 RUN addgroup -g 1000 -S www \
-    && adduser -u 1000 -D -S -G www -h /app -g www www \
+    && adduser -u 1000 -D -S -G www -h /var/www/src -g www www \
     && chown -R www:www /var/lib/nginx
 
+# Fixing path permissions
+RUN chown -R www:www /app
 
 # Start Supervisord
 ADD config/start.sh /start.sh
