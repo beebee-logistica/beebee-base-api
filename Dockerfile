@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.5
 
 MAINTAINER Juliano Petronetto <juliano@petronetto.com.br>
 
@@ -28,6 +28,7 @@ RUN apk --update add --no-cache \
         php7-ctype \
         php7-session \
         php7-gd \
+        php7-zlib \
         && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
