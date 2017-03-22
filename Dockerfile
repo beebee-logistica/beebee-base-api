@@ -28,7 +28,6 @@ RUN apk --update add --no-cache \
         php7-ctype \
         php7-session \
         php7-gd \
-        php7-zlib \
         && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
