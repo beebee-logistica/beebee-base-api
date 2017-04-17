@@ -51,7 +51,7 @@ WORKDIR /app
 
 # Set UID for www user to 1000
 RUN addgroup -g 1000 -S www \
-    && adduser -u 1000 -D -S -G www -h /var/www/src -g www www \
+    && adduser -u 1000 -D -S -G www -h /app -g www www \
     && chown -R www:www /var/lib/nginx
 
 # Fixing path permissions
