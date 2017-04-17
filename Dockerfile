@@ -59,7 +59,7 @@ RUN chown -R www:www /app
 
 # Start Supervisord
 ADD config/start.sh /start.sh
-RUN chmod x+a /start.sh
+RUN chmod 755 /start.sh
 
 # Start Supervisord
 CMD ["/start.sh"]
