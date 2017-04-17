@@ -26,6 +26,7 @@ RUN apk --update add --no-cache \
         php7-openssl \
         php7-json \
         php7-ctype \
+        php7-curl \
         php7-session \
         php7-gd \
         && rm -rf /var/cache/apk/*
@@ -58,7 +59,7 @@ RUN chown -R www:www /app
 
 # Start Supervisord
 ADD config/start.sh /start.sh
-RUN chmod 755 /start.sh
+RUN chmod x+a /start.sh
 
 # Start Supervisord
 CMD ["/start.sh"]
