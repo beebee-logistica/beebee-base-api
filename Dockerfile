@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.5
 
 MAINTAINER Juliano Petronetto <juliano@petronetto.com.br>
 
@@ -21,7 +21,7 @@ RUN apk --update add --no-cache \
         php7-opcache \
         php7-pdo \
         php7-pdo_pgsql \
-        php7.0-xml \
+        php7-xml \
         php7-phar \
         php7-openssl \
         php7-json \
