@@ -21,7 +21,7 @@ RUN apk --update add --no-cache \
         php7-opcache \
         php7-pdo \
         php7-pdo_pgsql \
-        php7-xml \
+        php7.0-xml \
         php7-phar \
         php7-openssl \
         php7-json \
@@ -32,7 +32,7 @@ RUN apk --update add --no-cache \
         && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
-RUN ln -s /usr/bin/php7 /usr/bin/php
+# RUN ln -s /usr/bin/php7 /usr/bin/php
 
 # Configure Nginx
 COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
