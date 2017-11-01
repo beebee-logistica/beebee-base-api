@@ -32,7 +32,7 @@ RUN apk --update add --no-cache \
         && rm -rf /var/cache/apk/*
 
 # Creating symbolic link to php
-# RUN ln -s /usr/bin/php7 /usr/bin/php
+RUN ln -s /usr/bin/php7 /usr/bin/php
 
 # Configure Nginx
 COPY config/nginx/nginx.conf /etc/nginx/nginx.conf
@@ -57,9 +57,13 @@ RUN addgroup -g 1000 -S www \
 # Fixing path permissions
 RUN chown -R www:www /app
 
-# Start Supervisord
-ADD config/start.sh /start.sh
-RUN chmod 755 /start.sh
+# Install newrelic agent
+NR_INSTALL_SILENT true
+COPY config/newrelic/install.sh /install.sh
+RUN /install.sh
+
+# Copy Supervisord
+COPY config/start.sh /start.sh
 
 # Start Supervisord
 CMD ["/start.sh"]
