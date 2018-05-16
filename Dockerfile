@@ -55,10 +55,12 @@ RUN addgroup -g 1000 -S www \
     && chown -R www:www /var/lib/nginx
 
 # Fixing path permissions
-RUN chown -R www:www /app
+RUN chown -R www:www /app \
+    && mkdir -p /tmp/nginx/client_body \
+    && chown -R www:www /tmp/nginx/client_body
 
 # Install newrelic agent
-NR_INSTALL_SILENT true
+ENV NR_INSTALL_SILENT true
 COPY config/newrelic/install.sh /install.sh
 RUN /install.sh
 
